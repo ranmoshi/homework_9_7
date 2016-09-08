@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{margin:0; padding:0;}
+		html,body{overflow:hidden;}
+		.box{width:200px; height:200px; border:1px solid #000; margin:100px auto; opacity: 0; display:none; -webkit-transform:scale(4,4); background:yellow;}
+	</style>
+	<script>
+		window.onload=function(){
+			var oBtn=document.querySelector('input');
+			var oDiv=document.querySelector('.box');
+			var oA=document.querySelector('a');
+			oBtn.onclick=function(){
+				oDiv.style.display='block';
+				setTimeout(function(){
+					oDiv.style.WebkitTransition='1s all ease';
+					oDiv.style.opacity=1;
+					oDiv.style.WebkitTransform='scale(1,1)';
+				},0)
+			};
+			oA.onclick=function(){
+				oDiv.style.WebkitTransition='1s all ease';
+				oDiv.style.opacity=0;
+				oDiv.style.WebkitTransform='scale(4,4)';
+				function Transend(){
+					oDiv.removeEventListener('transitionend',Transend,false);
+					oDiv.style.display='block';
+				}
+				oDiv.addEventListener('transitionend',Transend,false);
+			};
+		};
+	</script>
+</head>
+<body>
+	<input type="button" value="登录">
+	<div class="box">
+			登录界面
+		<input type="text">
+		<input type="text">
+		<input type="button" value="注册">
+		<input type="button" value="登录">
+		<a href="javascript:;">关闭</a>
+	</div>
+</body>
+</html>

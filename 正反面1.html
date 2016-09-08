@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{margin:0; padding:0;}
+		.box{width:200px; height:300px; margin:100px auto; -webkit-transform-style:preserve-3d; position:relative; transition:1s all ease;}
+		.box .t{width:200px; height:200px;position:absolute; left:0 ;top:0 ; -webkit-transform:translateZ(1px); background:yellow;}
+		.box .b{width:200px; height:200px;position:absolute; left:0 ;top:0 ; -webkit-transform:translateZ(-1px) scale(-1,1); background:aqua;}
+		.box:active{-webkit-transform:perspective(1000px) rotateY(180deg);}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<div class="t">正面</div>
+		<div class="b">反面</div>
+	</div>
+</body>
+</html>

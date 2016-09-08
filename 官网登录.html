@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		html.body{overflow: hidden;}
+		div{width:400px; height:300px; border:1px solid #000; border-radius: 20px; margin:100px auto; text-align: center; opacity:0;  display:none; -webkit-transform:scale(5,5); background:aqua;}
+	</style>
+	<script>
+		window.onload=function(){
+			var oBtn=document.querySelector('input');
+			var oClo=document.querySelector('a');
+			var oDiv=document.querySelector('div');
+			oBtn.onclick=function(){
+				oDiv.style.display='block';
+				setTimeout(function(){
+					oDiv.style.WebkitTransition='1s all ease';
+					oDiv.style.WebkitTransform='scale(1,1)';
+					oDiv.style.opacity=1;
+				},0);
+			};
+			oClo.onclick=function(){
+				oDiv.style.WebkitTransition='1s all ease';
+				oDiv.style.WebkitTransform='scale(5,5)';
+				oDiv.style.opacity=0;
+				function Transend(){
+					oDiv.removeEventListener('transitionend',Transend,false);
+					oDiv.style.display='none';
+				};
+				oDiv.addEventListener('transitionend',Transend,false);
+			};
+		};
+	</script>
+</head>
+<body>
+	<input type="button" value="登录" id="login">
+	<div>
+		<input type="text">
+		<input type="text">
+		<input type="text">
+		<input type="text">
+		<input type="text">
+		<a href="javascript:;">关闭</a>
+	</div>
+</body>
+</html>
